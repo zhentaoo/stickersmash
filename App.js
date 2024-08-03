@@ -40,7 +40,7 @@ export default function App() {
         />
         <Button label="Use this photo" />
       </View>
-      <StatusBar style="auto" />
+      <StatusBar style='light' />
     </View>
   );
 }
