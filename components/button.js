@@ -1,5 +1,7 @@
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+// import adjustSize from "../utils/adjustSize";
+import createStyles from "../utils/style";
 
 export default function Button({ label, theme, onPress }) {
   if (theme === "primary") {
@@ -33,10 +35,12 @@ export default function Button({ label, theme, onPress }) {
   );
 }
 
+// const styles = createStyles({
+
 const styles = StyleSheet.create({
   buttonContainer: {
-    width: 320,
-    height: 68,
+    width: 100,
+    height: 100,
     marginHorizontal: 20,
     alignItems: "center",
     justifyContent: "center",
