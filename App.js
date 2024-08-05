@@ -1,14 +1,17 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image, Text } from "react-native";
 import ImageViewer from "./components/imageViewer";
 import Button from "./components/button";
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
+import { useBearStore } from "./store/bear";
 
 const PlaceholderImage = require("./assets/images/background-image.png");
 
 export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const bears = useBearStore((state) => state.bears)
+  const increasePopulation = useBearStore((state) => state.increasePopulation)
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -26,6 +29,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.container.sm}>{bears}</View>
+      <Text onPress={increasePopulation}>click</Text>
       <View style={styles.imageContainer}>
         <ImageViewer
           placeholderImageSource={PlaceholderImage}
@@ -50,6 +55,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#25292e",
     alignItems: "center",
+    color: "white",
+    sm: {
+      color: 'red'
+    }
   },
   imageContainer: {
     flex: 1,
